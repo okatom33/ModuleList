@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TAB</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/jquery.sidr.dark.css">
+    <link rel="stylesheet" href="dist/stylesheets/jquery.sidr.dark.css">
+    <script type="text/javascript" src="libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="dist/jquery.sidr.js"></script>
+
+</head>
+<body>
+<a id="left-menu" href="#left-menu">Left Menu</a> 
+<a id="right-menu" href="#right-menu">Right Menu</a>
+ 
+<div id="sidr-left">
+  <!-- Your content -->
+  <ul>
+    <li><a href="#">List 1</a></li>
+    <li class="active"><a href="#">List 2</a></li>
+    <li><a href="#">List 3</a></li>
+  </ul>
+</div>
+  
+<div id="sidr-right">
+  <!-- Your content -->
+  <ul>
+    <li><a href="#">List 1</a></li>
+    <li class="active"><a href="#">List 2</a></li>
+    <li><a href="#">List 3</a></li>
+  </ul>
+</div>
+  
+<script>
+$(document).ready(function() {
+    $('#left-menu').sidr({
+      name: 'sidr-left',
+      side: 'left' // By default
+    });
+    $('#right-menu').sidr({
+      name: 'sidr-right',
+      side: 'right'
+    });
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TAB</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/jquery.ui.theme.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.mouse.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.sortable.js"></script>
+
+</head>
+<body id="modal" style="background:#777;">
+  <!-- ここからテスト的なメニュー -->
+  <section class="circle " style="position:relative;">
+    <label for="foo1">1</label>
+    <input id="foo1">
+    <div class="modal">
+      <div class="modalContent">
+        <ul class="menuList">
+          <li><a href="" class="first">☆</a></li>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+          <li><a href="">4</a></li>
+          <li><a href="">5</a></li>
+          <li><a href="">7</a></li>
+          <li><a href="">8</a></li>
+          <li><a href="">9</a></li>
+          <li><a href="">10</a></li>
+          <li><a href="">12</a></li>
+          <li><a href="">13</a></li>
+          <li><a href="">14</a></li>
+          <li><a href="" class="last">▽</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </section>
+<!--   <div id="waku">
+   
+      <h1>Drag And Drop Sample</h1>
+   
+      <div id="dropArea">
+          <h3>枠内に要素をドロップする</h3>
+          <ul id="sort-drop-area">
+              <li class="ui-state-default">
+                  <h3>
+                     Dropエリア
+                  </h3>
+              </li>
+              <li class="ui-state-default">
+                  <h3>
+                      ↑に要素を挿入できます
+                  </h3>
+              </li>
+          </ul>
+      </div>
+   
+      <div id="dragArea">
+          <h3>要素をドラッグする</h3>
+   
+          ●LI要素
+          <ul>
+              <li id="insert-object" class="ui-state-highlight">Style有り</li>
+              <li>Style無し</li>
+          </ul><br />
+   
+          ●画像<br />
+          <a href=""><img src="images/img1.jpg" height="200" width="auto"></a><br />
+          <a href=""><img src="images/img2.jpg" height="200" width="auto"></a>
+   
+      </div>
+      <div class="clear"></div>
+  </div>
+ -->
+
+  <!-- script -->
+  <script type="text/javascript">
+  window.onload = function() {
+
+        // 
+        jQuery( '#sort-drop-area' ) . sortable( {
+                revert: true
+        } );
+
+        // 
+        jQuery( '#dragArea' ).find('img,li').draggable( {
+            connectToSortable: '#sort-drop-area',
+            helper: 'clone',
+            revert: 'invalid',
+        } );
+
+        // 
+        jQuery( '#dragArea' ) . disableSelection();
+    };       
+
+  </script>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TAB</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+</head>
+<body>
+  <!-- ここからテスト的なメニュー -->
+  <section class="circle ">
+    <h1>TAB MENU</h1>
+    <div class="tab">
+      <div class="tabBox">
+        <h4 class="tabMenu">1</h4>
+        <p class="Text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <img src="images/img3.jpg" height="200" width="300" alt="">
+      </div>
+      <div class="tabBox">
+        <h4 class="tabMenu">2</h4>
+        <img src="images/img2.jpg" height="200" width="300" alt="">
+        <p class="Text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+      </div>
+      <div class="tabBox">
+        <h4 class="tabMenu">3</h4>
+        <img src="images/img1.jpg" height="200" width="300" alt="">
+        <p class="Text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+      </div>
+    </div>
+
+
+    <!-- ここからアコーディオン -->
+    <div class="acordion">
+      <h1 style="margin-top:20px;">ACORDION MENU</h1>
+      <ul id="menu">
+        <li>
+          <a href="">LIST 1 <span class="arrow "></span></a>
+          <ul>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">LIST 2 <span class="arrow"></span></a>
+          <ul>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">LIST 3 <span class="arrow"></span></a>
+          <ul>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">LIST 4 <span class="arrow"></span></a>
+          <ul>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+            <li><a href="">SUBMENU</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div style="margin-top:100px;">
+      <a href="" class="appealBtn">appealBtn</a>
+    </div>
+
+    <h1 style="margin-top:20px;">Flip Card</h1>
+    <div id="card">
+        <div id="face">
+            <div id="front">FRONT</div>
+            <div id="back" class="reversed">BACK</div>
+        </div>
+    </div>
+
+    <div style="position:relative;margin-top:30px;-webkit-perspective: 800px;perspective: 800px;">
+        <div class="cardImage">
+            <figure class="front">FRONT</figure>
+            <figure class="back">BACK</figure>
+        </div>
+    </div>
+
+
+
+
+
+  </section>
+
+
+  <!-- script -->
+  <script type="text/javascript">
+    $(function(){
+      //tabMenu
+      $('.tab').prepend('<div class="menu"></div>');
+      $('.menu').prepend($('.tabMenu'));
+      $('.tabMenu').wrapInner('<a href="javascript: void(0);"></a>');
+
+      var current = 0;
+      var show = $('.tab .tabBox').eq(current);
+      $('.tab .tabBox').not(show).hide();
+      $('.tab .tabMenu').eq(current).find('a').addClass('current');
+
+      $('.menu a').click(function(){
+        $('.tab .tabBox').hide().eq($('.menu a').index(this)).show();
+        $('.tab .tabMenu a').removeClass('current');
+        $(this).addClass('current');
+        return false;
+      });
+
+
+      // acordionMenu
+      //普段は消えている状態
+      $("#menu li ul").hide();
+
+      $("#menu > li > a").click(function(){
+          // #menu > li > aの隣のulをslideMenu とする ===> 「+」==　隣を意味する
+          var slideMenu = $("+ul",this);
+          // slideMenu をクリックしたらスライドアップする
+          slideMenu.slideDown('fast');
+          // slideMenu以外 をクリックしたらスライドダウンする
+          $("#menu ul").not(slideMenu).slideUp('fast');
+          // .arrowから.rotateを取る
+          $(".arrow").removeClass("rotate");
+          // クリックした要素の下の.arrowに.rotateを追加する
+          $("> .arrow",this).addClass("rotate");
+          return false;
+      });
+
+      //flip card
+      $(document).ready(function(){
+          var cardEl  = $("#card");
+          var frontEl = $("#front");
+          var backEl  = $("#back");
+          var touchDevice = typeof cardEl[0].ontouchstart !== "undefined";
+
+          var startX = null;
+          var minX   = 40;
+
+          cardEl.bind("touchstart mousedown", touchStart);
+
+          function touchStart(e) {
+              e.stopPropagation();
+
+              var ev = touchDevice ? e.originalEvent.touches[0] : e;
+              startX = ev.clientX;
+
+              cardEl.bind("touchmove mousemove", touchMove);
+          }
+
+          function touchMove(e) {
+              e.preventDefault();
+              var ev = touchDevice ? e.originalEvent.touches[0] : e;
+              var diffX = ev.clientX - startX;
+
+              if (Math.abs(diffX) > minX) {
+                  startX = null;
+                  cardEl.unbind("touchmove mousemove");
+                  turnCard(diffX);
+              }
+          }
+
+          function animationEnd(e) {
+              cardEl.removeClass();
+              frontEl.toggleClass("reversed");
+              backEl.toggleClass("reversed");
+              cardEl.unbind("webkitAnimationEnd");
+          }
+
+          function turnCard(diffX) {
+              cardEl.bind("webkitAnimationEnd", animationEnd);
+
+              if (diffX < 0) {
+                  cardEl.addClass("turnleft");
+              } else {
+                  cardEl.addClass("turnright");
+              }
+          }
+      });
+      //flipcard part2
+      $('.cardImage').click(function(ev){
+          //
+          if($(this).hasClass('fliped')){
+              $(this).removeClass('fliped');
+          }else{
+              $(this).addClass('fliped');
+          }
+      });
+    });
+  </script>
+</body>
+</html>

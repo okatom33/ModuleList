@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/blur.js"></script>
+
+</head>
+<body>
+
+
+  <!-- ここからテスト的なメニュー -->
+  <section>
+    <nav>
+      <a href="" class="home">enish</a>
+      <ul class="circle">
+        <li class="one"><a href="">1</a></li>
+        <li class="two"><a href="">2</a></li>
+        <li class="three"><a href="">3</a></li>
+        <li class="four"><a href="">4</a></li>
+        <li class="five"><a href="">5</a></li>
+      </ul>          
+    </nav> 
+  </section>   
+  <section class="circle">
+    <h1 style="color:#fff;">Circle Menu</h1>
+  <!-- ここからPath風メニュー -->
+    <div class="path">
+<!--       <div class="menuBlur"></div> -->
+      <div class="blur">
+        <input id="toggle" type="checkbox" />
+        <button><a href="">1</a></button>
+        <button><a href="">2</a></button>
+        <button><a href="">3</a></button>
+        <button><a href="">4</a></button>
+        <button><a href="">5</a></button>
+        <button><a href="">6</a></button>
+        <label for="toggle"><span class="rotate-button">+</span></label>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.blur').blurjs({
+        source: '.path',
+        overlay: 'rgba(255,255,255,0.1)',
+        radius:10
+      });
+    });
+  </script>
+</body>
+</html>
