@@ -25,9 +25,10 @@ section.circle{
   padding:0;
 }
 
-h1{
+h1,p{
   color:$textColor;
 }
+
 
 a{
   text-decoration:none;
@@ -354,7 +355,7 @@ menu{
         padding-top: 7px;
         background: #f50;
         top: 0;
-        color: #333;
+        color: #fff;
       }
     }
   }
@@ -500,20 +501,19 @@ input {
     position: relative;
     width: 0;
     &:focus + .modal {
-        display: inline-block;
+        display: block;
         vertical-align: top;
     }
 }
 .modal {
-    background: rgba(0,0,0,.5);
-    bottom: 0;
+    background: rgba(255,255,255,.5);
     display: none;
-    left: 0;
     position: absolute;
-    right: 0;
     top: 0;
     width:320px;
     height:100%;
+    z-index:1000;
+    margin:0 auto;
     .modalContent{
       ul.menuList{
         list-style:none;
@@ -680,3 +680,31 @@ input {
     transform: rotateY(180deg);
     -webkit-transform: rotateY( 180deg );
 }
+
+
+//DeckSelect------------------------------
+
+div#deckSelect{
+  margin-top:100px;
+  display:block;
+}
+ul.deckSelect{
+  list-style:none;
+  overflow:hidden;
+  width:200px;
+  margin:0 auto;
+  li{
+    float:left;
+    div.cardImg{
+      width:45px;
+      height:60px;
+      background:#ff9;
+      text-align:center;
+      line-height: 60px;
+      margin-left:6px;
+      margin-top:6px;
+    }
+  }
+}
+
+
